@@ -17,12 +17,11 @@ Works with safe integers greater than 0.
 linearArray(value, [offset])
 
 ```js
-import linearArray from ('linear-array'); // web
+import linearArray from 'linear-array'; // web
 
-OR
+OR;
 
-const linearArray = require 'linear-array'; // server
-
+const linearArray = require('linear-array'); // server
 
 console.log(linearArray(1)); //=> [0]
 console.log(linearArray(3)); //=> [0,1,2]
@@ -31,7 +30,6 @@ console.log(linearArray(5)); //=> [0,1,2,3,4]
 console.log(linearArray(1, true)); //=> [1]
 console.log(linearArray(3, true)); //=> [1,2,3]
 console.log(linearArray(5, true)); //=> [1,2,3,4,5]
-
 ```
 
 ## About
