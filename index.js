@@ -10,8 +10,6 @@
 const isNumber = require('is-number');
 
 module.exports = function linearArray(n) {
-  const n = Math.abs(value);
-
   if (!isNumber(n)) {
     throw new TypeError('expected a number');
   }
@@ -21,7 +19,11 @@ module.exports = function linearArray(n) {
   }
 
   if (!Number.isSafeInteger(n)) {
-    throw new Error('value exceeds maximum safe integer');
+    throw new Error('value above safe integer');
+  }
+
+  if (n < 0) {
+    throw new Error('expected a number greater or equal to 0');
   }
 
   return [...Array(n).keys()];
