@@ -57,6 +57,6 @@ $ npm install && npm test
 ### License
 
 Copyright © 2020, [Ivan Spoljaric](https://github.com/ispoljari).
-Released under the [MIT License](LICENSE).
+Released under the [MIT License](https://github.com/ispoljari/linear-array/blob/master/LICENSE.md).
 
 ---
