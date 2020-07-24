@@ -30,5 +30,8 @@
   "homepage": "https://github.com/ispoljari/linear-array#readme",
   "dependencies": {
     "is-number": "^7.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^8.0.1"
   }
 }
