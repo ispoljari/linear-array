@@ -12,7 +12,7 @@ $ npm install --save linear-array
 
 ## Usage
 
-Works with safe integer numbers greater than 0.
+Works with safe integers greater than 0.
 
 linearArray(value, [offset])
 
