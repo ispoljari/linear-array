@@ -1,7 +1,7 @@
 {
   "name": "linear-array",
   "version": "1.0.0",
-  "description": "Returns an array filed with linearly increasing numbers, starting from 0 to the given value n (which is a positive and safe integer).",
+  "description": "Returns an array filed with linearly increasing numbers, starting from 0 up to the given value (but not including the value itself).",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
@@ -20,7 +20,8 @@
     "from",
     "to",
     "given",
-    "value"
+    "value",
+    "offset"
   ],
   "author": "Ivan Spoljaric",
   "license": "MIT",

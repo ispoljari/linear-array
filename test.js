@@ -14,9 +14,30 @@ describe('linearArray', function () {
       () => linearArray(999999999999999999999),
       /value above safe integer/
     );
-    assert.throws(
-      () => linearArray(-3),
-      /expected a number greater or equal to 0/
-    );
+    assert.throws(() => linearArray(0), /expected a number greater than 0/);
+    assert.throws(() => linearArray(-3), /expected a number greater than 0/);
+  });
+
+  it('should return correct results given a valid n without offset', function () {
+    assert.deepStrictEqual(linearArray(1), [0]);
+    assert.deepStrictEqual(linearArray(5), [0, 1, 2, 3, 4]);
+    assert.deepStrictEqual(linearArray(10), [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  });
+
+  it('should return correct results given a valid n with offset', function () {
+    assert.deepStrictEqual(linearArray(1, true), [1]);
+    assert.deepStrictEqual(linearArray(5, true), [1, 2, 3, 4, 5]);
+    assert.deepStrictEqual(linearArray(10, true), [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+    ]);
   });
 });
