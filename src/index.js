@@ -9,7 +9,7 @@ import { isValid } from '../utils';
 
 export function fixedStep(n, offset = 0) {
   isValid(n);
-  isValid(offset);
+  !!offset && isValid(offset);
 
   const output = new Array(n);
 
