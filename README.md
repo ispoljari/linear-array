@@ -1,4 +1,7 @@
 # linear-array
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 > Returns an array filed with linearly increasing numbers, starting from 0 up to the given value - 1 (without offset), or from 1 to the value itself (with offset).
 
@@ -65,3 +68,22 @@ Copyright © 2020, [Ivan Spoljaric](https://github.com/ispoljari).
 Released under the [MIT License](https://github.com/ispoljari/linear-array/blob/master/LICENSE.md).
 
 ---
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/aminnairi"><img src="https://avatars3.githubusercontent.com/u/18418459?v=4" width="100px;" alt=""/><br /><sub><b>Amin NAIRI</b></sub></a><br /><a href="https://github.com/ispoljari/linear-array/commits?author=aminnairi" title="Code">💻</a> <a href="#ideas-aminnairi" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/ispoljari/linear-array/commits?author=aminnairi" title="Tests">⚠️</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
