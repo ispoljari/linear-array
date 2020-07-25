@@ -3,7 +3,7 @@
 require('mocha');
 
 const assert = require('assert');
-const linearArray = require('./');
+const linearArray = require('../src');
 
 describe('linearArray', function () {
   it('should throw an error if an invalid value is passed', function () {
