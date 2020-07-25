@@ -2,6 +2,13 @@
 
 > Returns an array filed with linearly increasing numbers, starting from 0 up to the given value - 1 (without offset), or from 1 to the value itself (with offset).
 
+## Contributors
+
+Many thanks goes to these people for helping me maintain and upgrade the project:
+
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+
 ## Install
 
 Install with [npm](https://www.npmjs.com/):
