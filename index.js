@@ -26,5 +26,12 @@ module.exports = function linearArray(n, offset = false) {
     throw new Error('expected a number greater than 0');
   }
 
-  return !offset ? [...Array(n).keys()] : Array.from(Array(n), (_, i) => i + 1);
+  const offsetValue = offset | 0;
+  const output = new Array(n);
+
+  for (let index = 0; index < n; index++) {
+    output[index] = index + offsetValue;
+  }
+
+  return output;
 };
