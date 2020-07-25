@@ -9,7 +9,7 @@
 
 const isNumber = require('is-number');
 
-module.exports = function linearArray(n, offset = false) {
+module.exports = function linearArray(n, offset = 0) {
   if (!isNumber(n)) {
     throw new TypeError('expected a number');
   }
@@ -26,11 +26,10 @@ module.exports = function linearArray(n, offset = false) {
     throw new Error('expected a number greater than 0');
   }
 
-  const offsetValue = offset | 0;
   const output = new Array(n);
 
   for (let index = 0; index < n; index++) {
-    output[index] = index + offsetValue;
+    output[index] = index + offset;
   }
 
   return output;
