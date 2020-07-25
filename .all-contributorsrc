@@ -1,0 +1,26 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "aminnairi",
+      "name": "Amin NAIRI",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/18418459?v=4",
+      "profile": "https://github.com/aminnairi",
+      "contributions": [
+        "code",
+        "ideas",
+        "test"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "linear-array",
+  "projectOwner": "ispoljari",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
