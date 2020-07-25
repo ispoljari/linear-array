@@ -25,19 +25,19 @@ describe('linearArray', function () {
   });
 
   it('should return correct results given a valid n with offset', function () {
-    assert.deepStrictEqual(linearArray(1, true), [1]);
-    assert.deepStrictEqual(linearArray(5, true), [1, 2, 3, 4, 5]);
-    assert.deepStrictEqual(linearArray(10, true), [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
+    assert.deepStrictEqual(linearArray(1, 1), [1]);
+    assert.deepStrictEqual(linearArray(5, 5), [5, 6, 7, 8, 9]);
+    assert.deepStrictEqual(linearArray(10, 10), [
       10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
     ]);
   });
 });
