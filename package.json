@@ -2,8 +2,8 @@
   "name": "linear-array",
   "version": "1.0.1",
   "description": "Returns an array filed with linearly increasing numbers, starting from 0 up to the given value - 1 (without offset), or from 1 to the value itself (with offset).",
-  "main": "dist/linear-array.js",
-  "module": "src/index.js",
+  "main": "./dist/linear-array.js",
+  "module": "./src/index.js",
   "scripts": {
     "test": "mocha",
     "build": "webpack"
