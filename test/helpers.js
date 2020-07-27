@@ -3,40 +3,57 @@ const ERR_EXPECTED_INTEGER = /expected an integer/;
 const ERR_EXPECTED_SAFE_INTEGER = /value above safe integer/;
 const ERR_EXPECTED_NATURAL_NUMBER = /expected a number greater or equal to 0/;
 const ERR_EXPECTED_BOOLEAN = /expected a boolean/;
+const ERR_EXPECTED_ARRAY = /expected an array/;
 
-const notBooleanErrorMsgPairs = [
+const createBasePairs = (errMsg) => [
   {
     input: 'random string',
-    expected: ERR_EXPECTED_BOOLEAN,
+    expected: errMsg,
   },
   {
     input: 23,
-    expected: ERR_EXPECTED_BOOLEAN,
+    expected: errMsg,
+  },
+  {
+    input: true,
+    expected: errMsg,
   },
   {
     input: {},
-    expected: ERR_EXPECTED_BOOLEAN,
+    expected: errMsg,
   },
   {
     input: { demo: 'stuff' },
-    expected: ERR_EXPECTED_BOOLEAN,
+    expected: errMsg,
   },
   {
     input: [],
-    expected: ERR_EXPECTED_BOOLEAN,
+    expected: errMsg,
   },
   {
     input: [1, 2, 3],
-    expected: ERR_EXPECTED_BOOLEAN,
+    expected: errMsg,
   },
   {
     input: NaN,
-    expected: ERR_EXPECTED_BOOLEAN,
+    expected: errMsg,
   },
   {
     input: Infinity,
-    expected: ERR_EXPECTED_BOOLEAN,
+    expected: errMsg,
   },
+];
+
+const notArrayErrorMsgPairs = [
+  ...createBasePairs(ERR_EXPECTED_ARRAY).filter(
+    (item) => !Array.isArray(item.input)
+  ),
+];
+
+const notBooleanErrorMsgPairs = [
+  ...createBasePairs(ERR_EXPECTED_BOOLEAN).filter(
+    (item) => typeof item.input !== 'boolean'
+  ),
 ];
 
 const notNaturalNumberErrorMsgPairs = [
@@ -69,38 +86,9 @@ const notIntegerErrorMsgPairs = [
 ];
 
 const notNumberErrorMsgPairs = [
-  {
-    input: 'random string',
-    expected: ERR_EXPECTED_NUMBER,
-  },
-  {
-    input: true,
-    expected: ERR_EXPECTED_NUMBER,
-  },
-  {
-    input: {},
-    expected: ERR_EXPECTED_NUMBER,
-  },
-  {
-    input: { demo: 'stuff' },
-    expected: ERR_EXPECTED_NUMBER,
-  },
-  {
-    input: [],
-    expected: ERR_EXPECTED_NUMBER,
-  },
-  {
-    input: [1, 2, 3],
-    expected: ERR_EXPECTED_NUMBER,
-  },
-  {
-    input: NaN,
-    expected: ERR_EXPECTED_NUMBER,
-  },
-  {
-    input: Infinity,
-    expected: ERR_EXPECTED_NUMBER,
-  },
+  ...createBasePairs(ERR_EXPECTED_NUMBER).filter(
+    (item) => !Number.isFinite(item.input)
+  ),
 ];
 
 module.exports = {
@@ -109,4 +97,5 @@ module.exports = {
   notSafeIntegerErrorMsgPairs,
   notNaturalNumberErrorMsgPairs,
   notBooleanErrorMsgPairs,
+  notArrayErrorMsgPairs,
 };

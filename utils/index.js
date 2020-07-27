@@ -25,3 +25,11 @@ export function areValidBooleans(...values) {
     }
   }
 }
+
+export function areValidArrays(...values) {
+  for (let i = 0; i < values.length; i++) {
+    if (!Array.isArray(values[i])) {
+      throw new Error('expected an array');
+    }
+  }
+}

@@ -13,19 +13,25 @@ import * as util from '../utils';
  */
 
 export function isSeqNaturalNumbers(arr) {
-  util.areValidNumbers(...arr);
+  util.areValidArrays(...[arr]);
 
-  if (arr[0] !== 0) {
-    return false;
-  }
+  try {
+    util.areValidNumbers(...arr);
 
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] - arr[i - 1] !== 1) {
+    if (arr[0] !== 0) {
       return false;
     }
-  }
 
-  return true;
+    for (let i = 1; i < arr.length; i++) {
+      if (arr[i] - arr[i - 1] !== 1) {
+        return false;
+      }
+    }
+
+    return true;
+  } catch (error) {
+    return false;
+  }
 }
 
 /**
