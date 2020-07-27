@@ -7,7 +7,7 @@ module.exports = {
     globalObject: 'this',
     path: path.resolve(__dirname, 'dist'),
     filename: 'linear-array.js',
-    library: 'linearr',
+    library: 'lineArr',
     libraryTarget: 'umd',
   },
 };

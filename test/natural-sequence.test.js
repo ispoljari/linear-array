@@ -1,43 +1,113 @@
-'use strict';
-
-require('mocha');
-
 const assert = require('assert');
-const linearArray = require('../src');
 
-describe('linearArray', function () {
-  it('should throw an error if an invalid value is passed', function () {
-    assert.throws(() => linearArray(), /expected a number/);
-    assert.throws(() => linearArray('random string'), /expected a number/);
-    assert.throws(() => linearArray(true), /expected a number/);
+const lineArr = require('../dist/linear-array');
+const {
+  notNumberErrorMsgPairs,
+  notIntegerErrorMsgPairs,
+  notSafeIntegerErrorMsgPairs,
+  notNaturalNumberErrorMsgPairs,
+  notBooleanErrorMsgPairs,
+} = require('./helpers');
+
+const throwsFirstArgumentAsserter = (assertList, fn) => {
+  for (let i = 0; i < assertList.length; i++) {
+    assert.throws(() => fn(assertList[i].input), assertList[i].expected);
+  }
+};
+
+const throwsSecondArgumentAsserter = (assertList, fn) => {
+  const FIXED_LIMITER = 10;
+  for (let i = 0; i < assertList.length; i++) {
     assert.throws(
-      () => linearArray(999999999999999999999),
-      /value above safe integer/
+      () => fn(FIXED_LIMITER, assertList[i].input),
+      assertList[i].expected
     );
-    assert.throws(() => linearArray(0), /expected a number greater than 0/);
-    assert.throws(() => linearArray(-3), /expected a number greater than 0/);
+  }
+};
+
+describe('lineArr > fillSeqNaturalNumbers', function () {
+  describe('type error > limiter [first argument]', function () {
+    it('should throw an error if the limiter value is not a number', function () {
+      throwsFirstArgumentAsserter(
+        notNumberErrorMsgPairs,
+        lineArr.fillSeqNaturalNumbers
+      );
+    });
+
+    it('should throw an error if the limiter is not an integer', function () {
+      throwsFirstArgumentAsserter(
+        notIntegerErrorMsgPairs,
+        lineArr.fillSeqNaturalNumbers
+      );
+    });
+
+    it('should throw an error if the limiter is not a safe integer', function () {
+      throwsFirstArgumentAsserter(
+        notSafeIntegerErrorMsgPairs,
+        lineArr.fillSeqNaturalNumbers
+      );
+    });
+
+    it('should throw an error if the limiter is not equal to or bigger than 0', function () {
+      throwsFirstArgumentAsserter(
+        notNaturalNumberErrorMsgPairs,
+        lineArr.fillSeqNaturalNumbers
+      );
+    });
   });
 
-  it('should return correct results given a valid n without offset', function () {
-    assert.deepStrictEqual(linearArray(1), [0]);
-    assert.deepStrictEqual(linearArray(5), [0, 1, 2, 3, 4]);
-    assert.deepStrictEqual(linearArray(10), [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  describe('type error > includeLast [second argument]', function () {
+    it('should throw an error if includeLast is not a boolean', function () {
+      throwsSecondArgumentAsserter(
+        notBooleanErrorMsgPairs,
+        lineArr.fillSeqNaturalNumbers
+      );
+    });
   });
 
-  it('should return correct results given a valid n with offset', function () {
-    assert.deepStrictEqual(linearArray(1, 1), [1]);
-    assert.deepStrictEqual(linearArray(5, 5), [5, 6, 7, 8, 9]);
-    assert.deepStrictEqual(linearArray(10, 10), [
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18,
-      19,
-    ]);
+  describe('results (given valid arguments)', function () {
+    const validInputResultPairs = [
+      {
+        input: [0],
+        expected: [],
+      },
+      {
+        input: [1],
+        expected: [0],
+      },
+      {
+        input: [3],
+        expected: [0, 1, 2],
+      },
+      {
+        input: [5],
+        expected: [0, 1, 2, 3, 4],
+      },
+      {
+        input: [0, true],
+        expected: [0],
+      },
+      {
+        input: [1, true],
+        expected: [0, 1],
+      },
+      {
+        input: [3, true],
+        expected: [0, 1, 2, 3],
+      },
+      {
+        input: [5, true],
+        expected: [0, 1, 2, 3, 4, 5],
+      },
+    ];
+
+    it('should return correct results', function () {
+      for (let i = 0; i < validInputResultPairs.length; i++) {
+        assert.deepStrictEqual(
+          lineArr.fillSeqNaturalNumbers(...validInputResultPairs[i].input),
+          validInputResultPairs[i].expected
+        );
+      }
+    });
   });
 });

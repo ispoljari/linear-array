@@ -13,23 +13,19 @@ import * as util from '../utils';
  */
 
 export function isSeqNaturalNumbers(arr) {
-  try {
-    util.isValidType(...arr);
+  util.areValidNumbers(...arr);
 
-    if (arr[0] !== 0) {
-      return false;
-    }
-
-    for (let i = 1; i < arr.length; i++) {
-      if (arr[i] - arr[i - 1] !== 1) {
-        return false;
-      }
-    }
-
-    return true;
-  } catch (error) {
+  if (arr[0] !== 0) {
     return false;
   }
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] - arr[i - 1] !== 1) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 /**
@@ -49,11 +45,12 @@ export function isSeqNaturalNumbers(arr) {
  */
 
 export function fillSeqNaturalNumbers(limiter, includeLast = false) {
-  util.isValidType(limiter);
+  util.areValidNumbers(limiter);
+  util.areValidBooleans(includeLast);
 
   const output = new Array(limiter);
 
-  for (let index = 0; index < includeLast ? limiter + 1 : limiter; index++) {
+  for (let index = 0; index < (includeLast ? limiter + 1 : limiter); index++) {
     output[index] = index;
   }
 
