@@ -1,5 +1,3 @@
-const assert = require('assert');
-
 const lineArr = require('../dist/linear-array');
 const {
   notNumberErrorMsgPairs,
@@ -8,55 +6,39 @@ const {
   notNaturalNumberErrorMsgPairs,
   notBooleanErrorMsgPairs,
   notArrayErrorMsgPairs,
-} = require('./helpers');
+} = require('./utils/input-expected-pairs');
 
-const throwsFirstArgumentAsserter = (assertList, fn) => {
-  for (let i = 0; i < assertList.length; i++) {
-    assert.throws(() => fn(assertList[i].input), assertList[i].expected);
-  }
-};
-
-const throwsSecondArgumentAsserter = (assertList, fn, fixedArg) => {
-  for (let i = 0; i < assertList.length; i++) {
-    assert.throws(
-      () => fn(fixedArg, assertList[i].input),
-      assertList[i].expected
-    );
-  }
-};
-
-const deepEqualsAsserter = (assertList, fn) => {
-  for (let i = 0; i < assertList.length; i++) {
-    assert.deepStrictEqual(fn(...assertList[i].input), assertList[i].expected);
-  }
-};
+const {
+  throwsArgumentAsserter,
+  deepEqualsAsserter,
+} = require('./utils/asserters');
 
 describe('lineArr > natural-sequence', function () {
   describe('fillSeqNaturalNumbers', function () {
     describe('type error > limiter (first argument)', function () {
       it('should throw an error if the limiter value is not a number', function () {
-        throwsFirstArgumentAsserter(
+        throwsArgumentAsserter(
           notNumberErrorMsgPairs,
           lineArr.fillSeqNaturalNumbers
         );
       });
 
       it('should throw an error if the limiter is not an integer', function () {
-        throwsFirstArgumentAsserter(
+        throwsArgumentAsserter(
           notIntegerErrorMsgPairs,
           lineArr.fillSeqNaturalNumbers
         );
       });
 
       it('should throw an error if the limiter is not a safe integer', function () {
-        throwsFirstArgumentAsserter(
+        throwsArgumentAsserter(
           notSafeIntegerErrorMsgPairs,
           lineArr.fillSeqNaturalNumbers
         );
       });
 
       it('should throw an error if the limiter is not equal to or bigger than 0', function () {
-        throwsFirstArgumentAsserter(
+        throwsArgumentAsserter(
           notNaturalNumberErrorMsgPairs,
           lineArr.fillSeqNaturalNumbers
         );
@@ -67,7 +49,7 @@ describe('lineArr > natural-sequence', function () {
       const FIXED_LIMITER = 10;
 
       it('should throw an error if includeLast is not a boolean', function () {
-        throwsSecondArgumentAsserter(
+        throwsArgumentAsserter(
           notBooleanErrorMsgPairs,
           lineArr.fillSeqNaturalNumbers,
           FIXED_LIMITER
@@ -123,7 +105,7 @@ describe('lineArr > natural-sequence', function () {
   describe('isSeqNaturalNumbers', function () {
     describe('type error > arr (only argument)', function () {
       it('should throw an error if arr is not of type Array', function () {
-        throwsFirstArgumentAsserter(
+        throwsArgumentAsserter(
           notArrayErrorMsgPairs,
           lineArr.isSeqNaturalNumbers
         );
@@ -183,10 +165,6 @@ describe('lineArr > natural-sequence', function () {
           input: [[0, 1, 2, 3, 4, 5, 6, 7, 8]],
           expected: true,
         },
-        // {
-        //   input: lineArr.fillSeqNaturalNumbers(10000),
-        //   expected: true,
-        // }
       ];
 
       it('should return false', function () {

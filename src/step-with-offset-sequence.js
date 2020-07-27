@@ -1,4 +1,4 @@
-import * as util from '../utils';
+import * as util from './utils';
 
 /**
  * (arr: number[], [step = 1]: number, [offset = 0]: number) => boolean.
@@ -19,8 +19,11 @@ import * as util from '../utils';
  */
 
 export function isStepSequenceWithOffset(arr, step = 1, offset = 0) {
+  util.areValidArrays(...[arr]);
+  util.areValidNumbers(step, offset);
+
   try {
-    util.areValidNumbers(...[...arr, step, offset]);
+    util.areValidNumbers(...[...arr]);
 
     if (arr[0] !== offset) {
       return false;
@@ -34,7 +37,7 @@ export function isStepSequenceWithOffset(arr, step = 1, offset = 0) {
 
     return true;
   } catch (error) {
-    return error;
+    return false;
   }
 }
 
@@ -57,17 +60,13 @@ export function isStepSequenceWithOffset(arr, step = 1, offset = 0) {
  */
 
 export function fillStepSequenceWithOffset(limiter, step = 1, offset = 0) {
-  try {
-    util.areValidNumbers(limiter, step, offset);
+  util.areValidNumbers(limiter, step, offset);
 
-    const output = new Array(limiter);
+  const output = new Array(limiter);
 
-    for (let index = 0; index < limiter; index++) {
-      output[index] = index * step + offset;
-    }
-
-    return output;
-  } catch (error) {
-    return error;
+  for (let index = 0; index < limiter; index++) {
+    output[index] = index * step + offset;
   }
+
+  return output;
 }
