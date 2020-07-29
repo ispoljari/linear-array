@@ -1,10 +1,12 @@
 {
   "name": "linear-array",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Returns an array filed with linearly increasing numbers, starting from 0 up to the given value - 1 (without offset), or from 1 to the value itself (with offset).",
-  "main": "index.js",
+  "main": "./dist/linear-array.js",
+  "module": "./src/index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "webpack && mocha",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -29,10 +31,16 @@
     "url": "https://github.com/ispoljari/linear-array/issues"
   },
   "homepage": "https://github.com/ispoljari/linear-array#readme",
-  "dependencies": {
-    "is-number": "^7.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "mocha": "^8.0.1"
+    "husky": "^4.2.5",
+    "mocha": "^8.0.1",
+    "webpack": "^4.44.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm test"
+    }
   }
 }
