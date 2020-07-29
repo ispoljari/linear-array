@@ -15,13 +15,10 @@ $ npm install --save linear-array
 2. import with a [`<script>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) tag
 
 ```js
-<script
-  type="module"
-  src="https://unpkg.com/linear-array@2.0.0/linear-array.js"
-></script>
+<script type="module" src="https://unpkg.com/linear-array@2.0.0"></script>
 ```
 
-## Importing in project
+## Importing and using in project
 
 Since this package can be used on the client side, as `UMD` or `ES6` module, and server side, as `CommonJS` module, there are 2 ways to import it into your .js file:
 
@@ -29,23 +26,63 @@ Since this package can be used on the client side, as `UMD` or `ES6` module, and
 
 ```js
 const lineArr = require('linear-array');
+
+// ...
+
+linear.isSeqNaturalNumbers([1, 2, 3]); // false
 ```
 
 - `ES6`
 
 ```js
-import lineArr from 'linear-array';
+import {
+  isSeqNaturalNumbers,
+  fillSeqNaturalNumbers,
+  fillStepSequenceWithOffset,
+  isStepSequenceWithOffset,
+} from 'linear-array';
+
+// ...
+
+isSeqNaturalNumbers([0, 1, 2, 3]); // true
+
+// OR
+
+import * as lineArr from 'linear-array';
+
+// ...
+
+lineArr.isSeqNaturalNumbers([0, 1, 2, 3]); // true
 ```
 
 - `UMD`
 
-Use the globally available `lineArr` module directly in your code.
+If you imported the `linear-array` library with the `<script>` tag it will be attached to the globally available `window` object.
 
-It is being imported from the `linear-array` liibrary with the `<script>` tag, and is attached to the globally available `window` variable.
+That's why you can use the module directly in your code by referencing the `lineArr` module directly
+
+```html
+<!-- index.html -->
+<html>
+  <head>
+    <!--  -->
+  </head>
+  <body>
+    <script src="https://unpkg.com/linear-array@2.0.0"></script>
+    <script src="custom.js"></script>
+  </body>
+</html>
+```
+
+```js
+// custom.js
+
+lineArr.isStepSequenceWithOffset([1, 2, 3]); // false
+```
 
 ## Usage
 
-Currently, there are 4 methods available through the `lineArr` module / namespace.
+Currently, there are 4 methods available in the package.
 
 Based on the differences in their input and output data types, they can be divided into 2 categories;
 
@@ -142,21 +179,21 @@ isStepSequenceWithOffset(arr, step?, offset?) === true || false
 
 The _linearArray_ method no longer exists and it is not imported directly from the library.
 
-Instead, a module called `lineArr` is imported and it contains a set of methods. See the **Usage** section on what they are and how they are used.
-
 The closes equivalent to the old `linearArray` method is now `fillSeqNaturalNumbers`
 
 **NEW FEATURES:**
 
-This update has 4 new methods which can be accessed through the `lineArr` module.
+This update has 4 new methods:
 
-- `lineArr.fillSeqNaturalNumbers`
+- `fillSeqNaturalNumbers`
 
-- `lineArr.isSeqNaturalNumbers`
+- `isSeqNaturalNumbers`
 
-- `lineArr.fillStepSequenceWithOffset`
+- `fillStepSequenceWithOffset`
 
-- `lineArr.isStepSequenceWithOffset`
+- `isStepSequenceWithOffset`
+
+See the **Usage** section on what they are and how they are used.
 
 ## About
 
