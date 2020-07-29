@@ -5,7 +5,6 @@ const {
   notIntegerErrorMsgPairs,
   notSafeIntegerErrorMsgPairs,
   notNaturalNumberErrorMsgPairs,
-  notBooleanErrorMsgPairs,
   notArrayErrorMsgPairs,
 } = require('./utils/input-expected-pairs');
 
@@ -147,6 +146,55 @@ describe('lineArr > step-with-offset-sequence', function () {
         deepEqualsAsserter(
           validInputResultPairs,
           lineArr.fillStepSequenceWithOffset
+        );
+      });
+    });
+  });
+
+  describe('isStepSequenceWithOffset', function () {
+    describe('type error > arr', function () {
+      it('should throw an error if arr is not of type Array', function () {
+        throwsArgumentAsserter(
+          notArrayErrorMsgPairs,
+          lineArr.isStepSequenceWithOffset
+        );
+      });
+    });
+
+    // add other type error checks
+
+    describe('results (given valid arguments)', function () {
+      const validInputResultPairs = [
+        {
+          input: [[0, 1, 2, 3, 4]],
+          expected: true,
+        },
+        {
+          input: [[0, 1, 2, 3, 4], 2],
+          expected: false,
+        },
+        {
+          input: [[0, 1, 2, 3, 4], 1, 1],
+          expected: false,
+        },
+        {
+          input: [[1, 2, 3, 4, 5], 1, 1],
+          expected: true,
+        },
+        {
+          input: [[6, 9, 12, 15, 18], 3, 6],
+          expected: true,
+        },
+        {
+          input: [[5, 9, 12, 15, 19], 3, 6],
+          expected: false,
+        },
+      ];
+
+      it('should return correct results', function () {
+        deepEqualsAsserter(
+          validInputResultPairs,
+          lineArr.isStepSequenceWithOffset
         );
       });
     });
