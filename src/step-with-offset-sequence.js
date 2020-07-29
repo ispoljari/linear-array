@@ -42,7 +42,7 @@ export function isStepSequenceWithOffset(arr, step = 1, offset = 0) {
 }
 
 /**
- * (limiter: number, ([step = 1]: number, [offset = 0]: number) => number[].
+ * (limiter: number, [step = 1]: number, [offset = 0]: number) => number[].
  *
  * Returns the following array:
  *
