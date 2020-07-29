@@ -63,6 +63,8 @@ But, repetition of numbers in the arrays is not allowed.
 ```js
 fillSeqNaturalNumbers(limiter, inludeLast?) === [0, 1, 2, 3, ... , includeLast ? limiter : (limiter - 1)]
 
+(0) -> []
+
 (7) -> [0, 1, 2, 3, 4, 5, 6]
 
 (7, true) -> [0, 1, 2, 3, 4, 5, 6, 7]
@@ -73,6 +75,10 @@ fillSeqNaturalNumbers(limiter, inludeLast?) === [0, 1, 2, 3, ... , includeLast ?
 
 ```js
 isSeqNaturalNumbers(arr) === true || false
+
+([]) -> false
+
+([0]) -> true
 
 ([0,1,2,3,4]) -> true
 
@@ -89,6 +95,12 @@ isSeqNaturalNumbers(arr) === true || false
 ```js
 fillStepSequenceWithOffset(limiter, step?, offset?) === [0+offset, step + offset, 2*step + offset, ..., (limiter - 1)*step + offset]
 
+(0) -> []
+
+(0,1,1) -> []
+
+(1,1,1) -> [1]
+
 (5) -> [0, 1, 2, 3, 4]
 
 (5,1,3) -> [3, 4, 5, 6, 7]
@@ -102,6 +114,12 @@ fillStepSequenceWithOffset(limiter, step?, offset?) === [0+offset, step + offset
 
 ```js
 isStepSequenceWithOffset(arr, step?, offset?) === true || false
+
+([]) -> false
+
+([0]) -> true
+
+([0],1,1) -> false
 
 ([0,1,2,3,4]) -> true
 
@@ -124,19 +142,21 @@ isStepSequenceWithOffset(arr, step?, offset?) === true || false
 
 The _linearArray_ method no longer exists and it is not imported directly from the library.
 
-Instead, a module called **lineArr** is imported and it contains a set of methods. See the **Usage** section on what they are and how they are used.
+Instead, a module called `lineArr` is imported and it contains a set of methods. See the **Usage** section on what they are and how they are used.
+
+The closes equivalent to the old `linearArray` method is now `fillSeqNaturalNumbers`
 
 **NEW FEATURES:**
 
-This update has 4 new methods which can be accessed through the **lineArr** module.
+This update has 4 new methods which can be accessed through the `lineArr` module.
 
-- lineArr.**fillSeqNaturalNumbers**
+- `lineArr.fillSeqNaturalNumbers`
 
-- lineArr.**isSeqNaturalNumbers**
+- `lineArr.isSeqNaturalNumbers`
 
-- lineArr.**fillStepSequenceWithOffset**
+- `lineArr.fillStepSequenceWithOffset`
 
-- lineArr.**isStepSequenceWithOffset**
+- `lineArr.isStepSequenceWithOffset`
 
 ## About
 
